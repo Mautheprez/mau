@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fce4ec; /* Colore di sfondo rosa pallido */
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #d81b60; /* Colore titolo rosa scuro */
+            font-size: 3.9em; /* Dimensione titolo aumentata del 30% */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #d81b60; /* Colore bordo rosa scuro */
+            padding: 10px;
+            text-align: left;
+            font-size: 2em; /* Dimensione testo tabella aumentata del 50% */
+        }
+        th {
+            background-color: #f5adc6; /* Rosa chiaro */
+        }
+        tr:nth-child(even) {
+            background-color: hsl(339, 74%, 89%); /* Colore righe alternate rosa pallido */
+        }
+        .link-row {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .link {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #ffc6da; /* Rosa chiaro */
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.56em; /* Dimensione link aumentata del 30% */
+        }
+        .link:hover {
+            background-color: #e9baca; /* Rosa più scuro */
+        }
+        .date-time-box {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fbc5d6; /* Rosa pallido */
+            border: 1px solid #d81b60; /* Colore bordo rosa scuro */
+            text-align: center;
+            font-size: 3em; /* Dimensione testo aumentata */
+        }
+        .italic {
+            font-style: italic;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            th, td {
+                font-size: 1.2em;
+            }
+            .link {
+                font-size: 1.22em;
+            }
+            .date-time-box {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bus Mattino</h1>
+    </header>
+    <main>
+        <table>
+            <tr>
+                <th>Trasporto</th>
+                <th>Ore</th>
+                <th>Classi</th>
+            </tr>
+            <tr>
+                <td>BUS_1</td>
+                <td>7:30</td>
+                <td>1A, 1B, 3A, 3B (+ 4B cucina il giovedì)</td>
+            </tr>
+            <tr>
+                <td>BUS_2</td>
+                <td>7:50</td>
+                <td>4A, 4B, 5B, 5C (- 4B sala il mercoledì)</td>
+            </tr>
+        </table>
+
+        <div class="date-time-box">
+            <span id="current-day" class="bold"></span><br>
+            <span id="current-datetime" class="bold"></span>
+        </div>
+        
+    </main>
+    <nav class="link-row">
+        <a href="home.html" class="link" title="Torna alla home">Home</a>
+        <a href="lunedi.html" class="link" title="Programma di lunedì">Lunedì</a>
+        <a href="martedi.html" class="link" title="Programma di martedì">Martedì</a>
+        <a href="mercoledi.html" class="link" title="Programma di mercoledì">Mercoledì</a>
+        <a href="giovedi.html" class="link" title="Programma di giovedì">Giovedì</a>
+        <a href="unico.html" class="link">Unico</a>
+    </nav>
+
+    <script>
+        // Funzione per ottenere la data, ora e giorno attuali
+        function updateDateTime() {
+            const now = new Date();
+            const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            document.getElementById('current-day').textContent = now.toLocaleString('it-IT', optionsDate).split(",")[0];
+            document.getElementById('current-datetime').textContent = now.toLocaleString('it-IT', optionsTime);
+        }
+
+        // Aggiorna data e ora al caricamento della pagina
+        updateDateTime();
+        // Opzionale: aggiorna ogni secondo
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
